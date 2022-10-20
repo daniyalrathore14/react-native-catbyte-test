@@ -1,5 +1,4 @@
 const ScreenNames = {
-  LOGIN: 'Login',
-  FORGOT_PASSWORD: 'ForgotPassword',
+  USERS: "UsersScreen",
 };
 export default ScreenNames;
