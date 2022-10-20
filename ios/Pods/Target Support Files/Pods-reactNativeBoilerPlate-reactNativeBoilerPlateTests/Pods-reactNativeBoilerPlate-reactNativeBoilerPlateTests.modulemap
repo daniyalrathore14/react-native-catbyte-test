@@ -1,0 +1,6 @@
+module Pods_reactNativeBoilerPlate_reactNativeBoilerPlateTests {
+  umbrella header "Pods-reactNativeBoilerPlate-reactNativeBoilerPlateTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
