@@ -1,11 +1,10 @@
 import axios from "axios";
-import { getToken } from "../utills/Methods";
 import { BaseUrl } from "./Config";
 axios.defaults.baseURL = BaseUrl;
 export const setBaseUrl = (baseUrl = "") => (axios.defaults.baseURL = baseUrl);
 axios.interceptors.response.use(
   function (response) {
-    return { ok: true, data: response?.data };
+    return response;
   },
   function (error) {
     return { ok: false, error: error?.response?.data };

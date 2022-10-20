@@ -4,7 +4,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { UsersScreen } from "~screens/app";
+import { UserDetail, UsersScreen } from "~screens/app";
 
 import ScreenNames from "./routes";
 
@@ -15,6 +15,7 @@ const Routes = () => {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={ScreenNames.USERS} component={UsersScreen} />
+        <Stack.Screen name={ScreenNames.USERDETAIL} component={UserDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

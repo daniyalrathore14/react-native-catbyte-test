@@ -1,37 +1,27 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define a type of User Meta
 interface UserMeta {
   id: string;
 }
-// Define a type for the slice state
 export interface UserState {
-  token?: string | null;
-  isLoggedIn?: boolean;
-  userMeta?: null | object;
+  userMeta?: Array<UserMeta>;
 }
 
-// Define the initial state using that type
 const initialState: UserState = {
-  token: null,
-  isLoggedIn: false,
-  userMeta: null,
+  userMeta: [],
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
-    setToken: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
-    },
-    setUserMeta: (state, action: PayloadAction<UserMeta>) => {
+    setUserMeta: (state, action: PayloadAction<Array<UserMeta>>) => {
+      console.log(action.payload);
+
       state.userMeta = action.payload;
-    },
-    setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
-      state.isLoggedIn = action.payload;
     },
   },
 });
+export const { setUserMeta } = userSlice.actions;
 
 export default userSlice;
