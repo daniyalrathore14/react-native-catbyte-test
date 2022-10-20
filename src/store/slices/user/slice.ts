@@ -20,8 +20,11 @@ const userSlice = createSlice({
 
       state.userMeta = action.payload;
     },
+    updateUserData: (state, action: PayloadAction<Array<UserMeta>>) => {
+      state.userMeta = action.payload;
+    },
   },
 });
-export const { setUserMeta } = userSlice.actions;
+export const { setUserMeta, updateUserData } = userSlice.actions;
 
 export default userSlice;

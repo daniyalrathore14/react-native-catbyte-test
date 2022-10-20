@@ -1,27 +1,17 @@
 import React from "react";
-import {
-  ImageBackground,
-  Pressable,
-  Text,
-  TextProps,
-  TextStyle,
-  TouchableOpacityProps,
-  ViewStyle,
-} from "react-native";
+import { ImageBackground, Pressable, Text } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import AppColors from "~utils/appColors";
 import styles from "./styles";
-
-// Component Props
-type VariantType = "primary" | "secondary";
 interface Props {
   onPress?: () => void;
   username: string;
   age: string | number;
   image: string;
+  onPressCross?: () => void;
 }
 
-const Button = ({ onPress, username, age, image }: Props) => {
+const UserCard = ({ onPress, onPressCross, username, age, image }: Props) => {
   return (
     <Pressable onPress={onPress}>
       <ImageBackground
@@ -37,8 +27,11 @@ const Button = ({ onPress, username, age, image }: Props) => {
           <Text style={styles.ageText}>{age}</Text>
         </LinearGradient>
       </ImageBackground>
+      <Pressable style={styles.crossBtn} onPress={onPressCross}>
+        <Text style={styles.crossText}>X</Text>
+      </Pressable>
     </Pressable>
   );
 };
 
-export default Button;
+export default UserCard;

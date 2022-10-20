@@ -1,12 +1,13 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
 import { ScreenWrapper } from "react-native-screen-wrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { UserCard } from "~components";
+import { Header, UserCard } from "~components";
 import { ScreenNames } from "~routes";
 import { selectUserList } from "~store/slices/user";
 import getUsersList from "~store/slices/user/actions";
+import { updateUserData } from "~store/slices/user/slice";
 import AppColors from "~utils/appColors";
 import styles from "./styles";
 interface FlatListDataProps {
@@ -20,12 +21,23 @@ const Users = ({ navigation }: NativeStackScreenProps<any>) => {
   useEffect(() => {
     dispatch(getUsersList());
   }, []);
-  const _renderItem = ({ item }: { item: FlatListDataProps }) => {
+  const _renderItem = ({
+    item,
+    index,
+  }: {
+    item: FlatListDataProps;
+    index: number;
+  }) => {
     return (
       <UserCard
         image={item?.image}
         username={item.username}
         age={item.age}
+        onPressCross={() => {
+          let temp = [...usersList];
+          temp.splice(index, 1);
+          dispatch(updateUserData(temp));
+        }}
         onPress={() => navigation.navigate(ScreenNames.USERDETAIL, item)}
       />
     );
@@ -33,9 +45,8 @@ const Users = ({ navigation }: NativeStackScreenProps<any>) => {
   return (
     <ScreenWrapper statusBarColor={AppColors.black}>
       <View style={styles.mainContainer}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>USERS LIST</Text>
-        </View>
+        <Header title={"User List"} showRightIcon={false} />
+
         <FlatList
           data={usersList}
           numColumns={2}
@@ -43,6 +54,12 @@ const Users = ({ navigation }: NativeStackScreenProps<any>) => {
           renderItem={_renderItem}
         />
       </View>
+      <Pressable
+        style={styles.floatingBtn}
+        onPress={() => navigation.navigate(ScreenNames.ADDUSER)}
+      >
+        <Text style={styles.plustext}>+</Text>
+      </Pressable>
     </ScreenWrapper>
   );
 };

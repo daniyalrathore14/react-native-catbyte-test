@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     height: height(25),
     marginTop: height(1),
     justifyContent: "flex-end",
+    overflow: "hidden",
   },
   image: {
     width: width(29),
@@ -43,6 +44,20 @@ const styles = StyleSheet.create({
     color: AppColors.white,
     fontSize: width(3),
     fontWeight: "600",
+  },
+  crossBtn: {
+    position: "absolute",
+    width: width(8),
+    height: width(8),
+    backgroundColor: AppColors.black50,
+    borderRadius: width(100),
+    top: height(2),
+    right: width(3),
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  crossText: {
+    color: AppColors.white,
   },
 });
 
