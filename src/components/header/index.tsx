@@ -1,22 +1,8 @@
 import React from "react";
-import {
-  Image,
-  ImageBackground,
-  Pressable,
-  Text,
-  TextProps,
-  TextStyle,
-  TouchableOpacityProps,
-  View,
-  ViewStyle,
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import { Image, Pressable, Text, View } from "react-native";
 import { Icons } from "~assets/icons";
-import AppColors from "~utils/appColors";
 import styles from "./styles";
 
-// Component Props
-type VariantType = "primary" | "secondary";
 interface Props {
   onPress?: () => void;
   title: string;
